@@ -3,11 +3,7 @@ import './App.css';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
 
@@ -21,15 +17,22 @@ function App() {
         <Navbar title="TextUtils" />
         <div className='container'>
 
-          <Switch>
+
+        {/* for less than v6 */}
+          {/* <Switch>
             <Route path="/">
-              <TextForm heading="Enter The Text To Analyze" />
+              <TextForm heading="Enter The Text To Analyze" /> 
             </Route>
             <Route path="/about">
-              <About />
+            <About />
             </Route>
 
-          </Switch>
+          </Switch> */}
+
+          <Routes>
+        <Route path="/about" caseSensitive={false} element={<About />} />
+        <Route path="/" caseSensitive={false} element={<TextForm heading="Enter The Text To Analyze"/>} />
+      </Routes>
 
         </div>
       </Router>
